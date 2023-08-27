@@ -2,63 +2,6 @@
     "version": 2,
     "configurePresets": [
         {
-            "name": "clang-10-conf",
-            "displayName": "Configure clang10 preset",
-            "description": "Sets Ninja generator, build and install directory",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/out/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "TRUE",
-                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
-                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake",
-                "VCPKG_TARGET_TRIPLET": "x64-linux-clang-10",
-                "VCPKG_VERBOSE": "ON"
-            },
-            "environment": {
-                "VCPKG_ROOT" : "${sourceDir}/vcpkg"
-            }
-        },
-        {
-            "name": "clang-test-conf",
-            "displayName": "Configure clang-test preset",
-            "description": "Sets Ninja generator, build and install directory",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/out/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "TRUE",
-                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
-                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake",
-                "VCPKG_TARGET_TRIPLET": "x64-linux-clang-test",
-                "VCPKG_VERBOSE": "ON"
-            },
-            "environment": {
-                "VCPKG_ROOT" : "${sourceDir}/vcpkg"
-            }
-        },
-        {
-            "name": "clang-18-conf",
-            "displayName": "Configure clang18 preset",
-            "description": "Sets Ninja generator, build and install directory",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/out/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "TRUE",
-                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
-                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/cmake",
-                "VCPKG_TARGET_TRIPLET": "x64-linux-clang-18",
-                "VCPKG_VERBOSE": "ON"
-            },
-            "environment": {
-                "VCPKG_ROOT" : "${sourceDir}/vcpkg"
-            }
-        }, 
-        {
             "name": "gcc-conf",
             "displayName": "Configure gcc preset",
             "description": "Sets Ninja generator, build and install directory",
@@ -77,26 +20,6 @@
         }
     ],
     "buildPresets": [
-        {
-            "name": "clang10-build",
-            "description": "build with clang10",
-            "displayName": "clang10 build",
-            "configurePreset": "clang-10-conf",
-            "targets": [
-                "hello",
-                "clean"
-            ]
-        },
-        {
-            "name": "clang18-build",
-            "description": "build clang18",
-            "displayName": "clang18 build",
-            "configurePreset": "clang-18-conf",
-            "targets": [
-                "hello",
-                "clean"
-            ]
-        },
         {
             "name": "gcc-build",
             "description": "build gcc",
