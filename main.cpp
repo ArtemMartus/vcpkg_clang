@@ -13,11 +13,14 @@
 #include <ostream>
 #include <string>
 #include <boost/asio/ts/internet.hpp>
+#include <rtc/peerconnection.hpp>
 
 using boost::asio::ip::tcp;
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
+  rtcPreload();
+
   try
   {
     if (argc != 3)
@@ -82,10 +85,11 @@ int main(int argc, char* argv[])
     // Write the remaining data to output.
     std::cout << s.rdbuf();
   }
-  catch (std::exception& e)
+  catch (std::exception &e)
   {
     std::cout << "Exception: " << e.what() << "\n";
   }
+  rtcCleanup();
 
   return 0;
 }

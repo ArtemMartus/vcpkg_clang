@@ -2,29 +2,48 @@
     "version": 2,
     "configurePresets": [
         {
-            "name": "gcc-conf",
-            "displayName": "Configure gcc preset",
-            "description": "Sets Ninja generator, build and install directory",
+            "name": "gcc-rel",
+            "displayName": "gcc Release preset",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/${presetName}",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_INTERPROCEDURAL_OPTIMIZATION": "TRUE",
+                "CMAKE_BUILD_TYPE": "$env{build_type}",
                 "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
-                "VCPKG_VERBOSE": "ON"
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
             },
             "environment": {
-                "VCPKG_ROOT" : "${sourceDir}/vcpkg"
+                "build_type": "Release"
+            }
+        },
+        {
+            "name": "gcc-dbg",
+            "displayName": "gcc Debug preset",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "$env{build_type}",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+            },
+            "environment": {
+                "build_type": "Debug"
             }
         }
     ],
     "buildPresets": [
         {
-            "name": "gcc-build",
-            "description": "build gcc",
-            "displayName": "gcc build",
-            "configurePreset": "gcc-conf",
+            "name": "gcc-rel",
+            "displayName": "gcc build release",
+            "configurePreset": "gcc-rel",
+            "targets": [
+                "hello",
+                "clean"
+            ]
+        },
+        {
+            "name": "gcc-dbg",
+            "displayName": "gcc build debug",
+            "configurePreset": "gcc-dbg",
             "targets": [
                 "hello",
                 "clean"
