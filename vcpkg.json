@@ -1,6 +1,8 @@
 {
     "dependencies": [
         "boost-asio",
+        "boost-json",
+        "boost-beast",
         "vcpkg-tool-ninja",
         "libdatachannel"
     ]
